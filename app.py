@@ -17,8 +17,8 @@ def predict():
         # Get data from the form
         revenue = float(request.form['feature1'])  # Revenue (Millions)
         runtime = float(request.form['feature2'])  # Runtime (Minutes)
-        genre = request.form['feature3']            # Genre
-        director = request.form['feature4']         # Director
+        genre = request.form['feature3']           # Genre
+        director = request.form['feature4']        # Director
         
         # Prepare the input data for prediction as a DataFrame
         input_data = pd.DataFrame({
@@ -35,8 +35,11 @@ def predict():
         prediction = pipeline.predict(input_data)
         print("Prediction Result:", prediction)  # Debug line
 
-        # Return prediction to the template
-        return render_template('index.html', prediction=prediction[0])
+        # Round the prediction to the nearest integer
+        rounded_prediction = round(prediction[0])
+
+        # Return rounded prediction to the template
+        return render_template('index.html', prediction=rounded_prediction)
     
     except ValueError as ve:
         print(f"ValueError: {ve}")  # Print ValueError
