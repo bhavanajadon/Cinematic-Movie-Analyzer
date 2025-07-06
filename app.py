@@ -5,7 +5,7 @@ import pickle
 app = Flask(__name__)
 
 # Load your trained model pipeline
-pipeline = pickle.load(open('C:/Users/This PC/OneDrive/Desktop/imdb/pipeline.pkl', 'rb'))
+pipeline = pickle.load(open('C:\imdb\pipeline.pkl', 'rb'))
 
 @app.route('/')
 def home():
